@@ -1,1 +1,259 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZŁA Strona Mocy | Nieoficjalny Portal Kibiców AKS ZŁY</title>
+    <style>
+        /* Import czcionki dla nowoczesnego wyglądu */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
 
+        /* Ustawienia globalne */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0d0d0d;
+            color: #f4f4f4;
+            line-height: 1.6;
+        }
+
+        /* Nagłówek */
+        header {
+            background: linear-gradient(180deg, #000000 0%, #1a1a1a 100%);
+            border-bottom: 3px solid #ff003c; /* Agresywny, kibicowski akcent */
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .logo {
+            width: 150px;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255, 0, 60, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #aaaaaa;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Główny kontener */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Sekcja wyników */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+
+        .results-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .team-box {
+            background-color: #1a1a1a;
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            border-top: 4px solid #ff003c;
+        }
+
+        .team-header {
+            background-color: #222;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .match {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #333;
+        }
+
+        .match:last-child {
+            border-bottom: none;
+        }
+
+        .team-name {
+            font-weight: bold;
+            width: 40%;
+        }
+
+        .team-name.home { text-align: right; }
+        .team-name.away { text-align: left; }
+
+        .score {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #ff003c;
+            padding: 0 15px;
+            text-align: center;
+        }
+
+        .win { color: #00ff66; }
+        .lose { color: #ff003c; }
+        .draw { color: #ffcc00; }
+
+        /* Sekcja śpiewnika */
+        .songbook-section {
+            margin-top: 60px;
+            text-align: center;
+            background: #111;
+            padding: 50px 20px;
+            border-radius: 10px;
+            border: 1px solid #333;
+        }
+
+        .songbook-section p {
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+            color: #ccc;
+        }
+
+        .btn-download {
+            display: inline-block;
+            background-color: #ff003c;
+            color: #fff;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            text-transform: uppercase;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 15px rgba(255, 0, 60, 0.4);
+        }
+
+        .btn-download:hover {
+            background-color: #cc0030;
+            transform: translateY(-3px);
+        }
+
+        /* Stopka */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: #050505;
+            color: #666;
+            margin-top: 50px;
+            font-size: 0.9rem;
+        }
+
+        /* Responsywność */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .team-name { font-size: 0.9rem; }
+            .score { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="Logo/AKS_ZŁY.jpg" alt="Logo AKS ZŁY" class="logo" onerror="this.src='https://via.placeholder.com/150/000000/FFFFFF?text=Brak+Logo'">
+        <h1>AKS ZŁY - ZŁA STRONA MOCY</h1>
+        <p class="subtitle">Niezależny Portal Kibicowski</p>
+    </header>
+
+    <div class="container">
+        
+        <h2 class="section-title">Ostatnie Bitwy na Murawie</h2>
+
+        <div class="results-wrapper">
+            <div class="team-box">
+                <div class="team-header">Drużyna Męska</div>
+                
+                <div class="match">
+                    <div class="team-name home">AKS ZŁY</div>
+                    <div class="score win">3 - 1</div>
+                    <div class="team-name away">FC Praga</div>
+                </div>
+                
+                <div class="match">
+                    <div class="team-name home">Coco Jambo Warszawa</div>
+                    <div class="score draw">2 - 2</div>
+                    <div class="team-name away">AKS ZŁY</div>
+                </div>
+
+                <div class="match">
+                    <div class="team-name home">AKS ZŁY</div>
+                    <div class="score lose">0 - 1</div>
+                    <div class="team-name away">Błyskawica Warszawa</div>
+                </div>
+            </div>
+
+            <div class="team-box">
+                <div class="team-header">Drużyna Żeńska</div>
+                
+                <div class="match">
+                    <div class="team-name home">AKS ZŁY</div>
+                    <div class="score win">4 - 0</div>
+                    <div class="team-name away">Zamłynie Radom</div>
+                </div>
+                
+                <div class="match">
+                    <div class="team-name home">Legia Soccer Schools</div>
+                    <div class="score win">1 - 2</div>
+                    <div class="team-name away">AKS ZŁY</div>
+                </div>
+
+                <div class="match">
+                    <div class="team-name home">AKS ZŁY</div>
+                    <div class="score draw">1 - 1</div>
+                    <div class="team-name away">Polonia Warszawa</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="songbook-section">
+            <h2 class="section-title" style="border:none; margin-bottom:10px;">Zdzieramy Gardła!</h2>
+            <p>Nie znasz słów? Nie ma wymówek. Pobierz nasz śpiewnik, ucz się na blachę i widzimy się na młynie.</p>
+            <a href="spiewnik/spiewnik.pdf" target="_blank" class="btn-download">🔥 Pobierz Śpiewnik Kibica (PDF)</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 ZŁA STRONA MOCY. Portal tworzony przez kibiców dla kibiców. ALWAYS ANTI-FASCIST.</p>
+    </footer>
+
+</body>
+</html>
