@@ -3,6 +3,267 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZŁY ZIN | Oficjalny Raport Kibicowski</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700;900&display=swap');
+
+        :root {
+            --bg: #e8e8e8;
+            --paper: #ffffff;
+            --ink: #000000;
+            --tape: rgba(220, 220, 180, 0.6);
+            --red: #d10000;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--ink);
+            font-family: 'Space Grotesk', sans-serif;
+            padding: 40px 10px;
+            background-image: radial-gradient(#ccc 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .zine-sheet {
+            max-width: 950px;
+            margin: 0 auto;
+            background: var(--paper);
+            border: 2px solid var(--ink);
+            padding: 50px;
+            position: relative;
+            box-shadow: 20px 20px 0px rgba(0,0,0,0.1);
+        }
+
+        .tape-effect {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            background: var(--tape);
+            width: 120px;
+            height: 40px;
+            transform: rotate(15deg);
+            z-index: 10;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 60px;
+            border-bottom: 8px solid var(--ink);
+            padding-bottom: 20px;
+        }
+
+        .header-main h1 {
+            font-size: 5rem;
+            line-height: 0.8;
+            margin: 0;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -4px;
+        }
+
+        .logo-box {
+            border: 3px solid var(--ink);
+            padding: 10px;
+            background: #fff;
+            transform: rotate(-3deg);
+        }
+
+        .logo { width: 160px; filter: grayscale(1); }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .column h2 {
+            background: var(--ink);
+            color: var(--paper);
+            display: inline-block;
+            padding: 5px 15px;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            transform: skew(-5deg);
+        }
+
+        .match-card {
+            font-family: 'Courier Prime', monospace;
+            border-left: 4px solid var(--ink);
+            margin-bottom: 15px;
+            padding-left: 15px;
+            line-height: 1.2;
+        }
+
+        .next-match {
+            background: #eee;
+            border: 2px dashed var(--ink);
+            padding: 15px;
+            margin-bottom: 25px;
+        }
+
+        .score { float: right; font-weight: 900; font-size: 1.2rem; background: #000; color: #fff; padding: 0 5px; }
+        .score.cancelled { background: var(--red); }
+
+        /* ZŁY SKŁADZIK */
+        .skladzik-section {
+            margin-top: 50px;
+            border-top: 5px double var(--ink);
+            padding-top: 40px;
+        }
+
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .shop-item {
+            border: 1px solid #000;
+            padding: 10px;
+            font-family: 'Courier Prime', monospace;
+            position: relative;
+        }
+
+        .shop-item img {
+            width: 100%;
+            height: 120px;
+            background: #f0f0f0;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ddd;
+        }
+
+        .price-tag {
+            color: var(--red);
+            font-weight: bold;
+            font-size: 1.2rem;
+            transform: rotate(-10deg);
+            display: inline-block;
+        }
+
+        .handwritten {
+            font-family: 'Courier Prime', monospace;
+            color: var(--red);
+            font-weight: bold;
+            font-size: 1.1rem;
+            position: absolute;
+        }
+
+        @media (max-width: 800px) {
+            .grid, .shop-grid { grid-template-columns: 1fr; }
+            .header-main h1 { font-size: 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="zine-sheet">
+        <div class="tape-effect"></div>
+        
+        <header>
+            <div class="header-main">
+                <h1>ZŁY<br>ZIN</h1>
+                <p>BIULETYN NIEZALEŻNY // SEZON 2025/26</p>
+            </div>
+            <div class="logo-box">
+                <img src="Logo/AKS_ZŁY.jpg" alt="AKS ZŁY" class="logo" onerror="this.src='https://via.placeholder.com/160/000?text=AKS+ZLY'">
+            </div>
+        </header>
+
+        <div class="grid">
+            <div class="column">
+                <h2>ZŁE DZIEWCZYNY</h2>
+                
+                <div class="next-match">
+                    <strong style="font-family: 'Courier Prime';">NAJBLIŻSZY MECZ:</strong><br>
+                    FUKS PUŁTUSK vs ZŁY PRAGA W-WA
+                </div>
+
+                <div class="match-card">
+                    <span>ZŁY PRAGA W-WA vs LECH II POZNAŃ</span>
+                    <span class="score">0:0</span>
+                </div>
+
+                <div class="match-card">
+                    <span>WISŁA PŁOCK vs ZŁY PRAGA W-WA</span>
+                    <span class="score cancelled">ODWOŁANY</span>
+                </div>
+
+                <div class="match-card">
+                    <span>ZŁY PRAGA W-WA vs AKS SMS ŁÓDŹ</span>
+                    <span class="score">1:5</span>
+                </div>
+            </div>
+
+            <div class="column">
+                <h2>ZŁE CHŁOPAKI</h2>
+                
+                <div class="next-match">
+                    <strong style="font-family: 'Courier Prime';">NAJBLIŻSZY MECZ:</strong><br>
+                    WISŁA DZIECINÓW vs AKS ZŁY
+                </div>
+
+                <div class="match-card">
+                    <span>AKS ZŁY vs OKS START OTWOCK</span>
+                    <span class="score">0:1</span>
+                </div>
+
+                <div class="match-card">
+                    <span>IMPULS WARSZAWA vs AKS ZŁY</span>
+                    <span class="score">9:0</span>
+                </div>
+
+                <div class="match-card">
+                    <span>AKS ZŁY vs KS GLINIANKA</span>
+                    <span class="score">0:4</span>
+                </div>
+                <span class="handwritten" style="position:relative; left: 20px;">Głowa do góry!</span>
+            </div>
+        </div>
+
+        <div class="skladzik-section">
+            <h2 style="background: var(--ink); color: #fff; padding: 5px 15px; display: inline-block; transform: rotate(-2deg); margin-bottom: 30px;">ZŁY SKŁADZIK</h2>
+            <div class="shop-grid">
+                <div class="shop-item">
+                    <img src="https://via.placeholder.com/150?text=SZALIK" alt="Szalik">
+                    SZALIK "ZŁY"<br>
+                    <span class="price-tag">53 ZŁ</span>
+                </div>
+                <div class="shop-item" style="transform: rotate(2deg);">
+                    <img src="https://via.placeholder.com/150?text=KOSZULKA" alt="Koszulka">
+                    KOSZULKA MECZOWA<br>
+                    <span class="price-tag">199 ZŁ</span>
+                </div>
+                <div class="shop-item">
+                    <img src="https://via.placeholder.com/150?text=VLEPKI" alt="Vlepki">
+                    ZESTAW VLEPEK<br>
+                    <span class="price-tag">10 ZŁ</span>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 60px; border: 4px dashed var(--ink); padding: 30px; text-align: center;">
+            <h3>ŚPIEWAJ Z NAMI</h3>
+            <p>Nie znasz słów? Nie ma wymówek. Śpiewnik w PDF gotowy do druku.</p>
+            <a href="spiewnik/spiewnik.pdf" target="_blank" style="background: var(--ink); color: var(--paper); padding: 15px 30px; text-decoration: none; font-weight: 900; display: inline-block; margin-top: 15px;">POBIERZ ŚPIEWNIK.PDF</a>
+        </div>
+
+        <div style="margin-top: 40px; text-align: center; font-family: 'Courier Prime'; font-size: 0.8rem;">
+            <p>WYDANO NA PRADZE // DON PEDRO ARENA // 2026</p>
+        </div>
+    </div>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZŁY ZIN | Niezależny Serwis AKS</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700;900&display=swap');
