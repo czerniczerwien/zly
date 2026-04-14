@@ -3,208 +3,248 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZŁY ZIN | Strefa Kibica</title>
+    <title>ZŁY ZIN | Niezależny Serwis AKS</title>
     <style>
-        /* Surowy, maszynowy font i mocny akcent */
-        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Space+Grotesk:wght@300;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700;900&display=swap');
+
+        :root {
+            --bg: #e8e8e8;
+            --paper: #ffffff;
+            --ink: #000000;
+            --tape: rgba(220, 220, 180, 0.6);
+        }
 
         body {
-            background-color: #f0f0f0; /* Kolor starego papieru/betonu */
-            color: #1a1a1a;
+            background-color: var(--bg);
+            color: var(--ink);
             font-family: 'Space Grotesk', sans-serif;
-            padding: 20px;
-            background-image: radial-gradient(#ccc 1px, transparent 1px);
-            background-size: 20px 20px; /* Delikatna kropka w tle jak w druku */
+            padding: 40px 10px;
+            background-image: linear-gradient(0deg, #dcdcdc 1px, transparent 1px), linear-gradient(90deg, #dcdcdc 1px, transparent 1px);
+            background-size: 30px 30px;
         }
 
-        .zine-container {
-            max-width: 900px;
+        .zine-sheet {
+            max-width: 950px;
             margin: 0 auto;
-            border: 3px solid #000;
-            background: #fff;
-            padding: 40px;
-            box-shadow: 15px 15px 0px #000;
+            background: var(--paper);
+            border: 2px solid var(--ink);
+            padding: 50px;
+            position: relative;
+            box-shadow: 20px 20px 0px rgba(0,0,0,0.1);
         }
 
-        /* Nagłówek jako "wycinek z gazety" */
+        /* Efekt taśmy klejącej przy logo */
+        .tape-effect {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            background: var(--tape);
+            width: 120px;
+            height: 40px;
+            transform: rotate(15deg);
+            z-index: 10;
+        }
+
         header {
-            border-bottom: 5px double #000;
-            padding-bottom: 30px;
-            margin-bottom: 50px;
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            flex-wrap: wrap;
+            align-items: flex-end;
+            margin-bottom: 60px;
+            border-bottom: 8px solid var(--ink);
+            padding-bottom: 20px;
         }
 
-        .header-text h1 {
-            font-size: 4rem;
+        .header-main h1 {
+            font-size: 5rem;
             line-height: 0.8;
             margin: 0;
+            font-weight: 900;
             text-transform: uppercase;
-            font-weight: 700;
-            letter-spacing: -2px;
+            letter-spacing: -4px;
         }
 
-        .logo-wrap {
-            transform: rotate(-5deg); /* Asymetria */
-            border: 2px solid #000;
-            padding: 5px;
+        .logo-box {
+            border: 3px solid var(--ink);
+            padding: 10px;
             background: #fff;
+            transform: rotate(-3deg);
+            transition: transform 0.3s;
         }
 
-        .logo {
-            width: 140px;
-            filter: grayscale(1); /* Styl czarno-białego zina */
-            display: block;
-        }
+        .logo-box:hover { transform: rotate(0deg) scale(1.1); }
+        .logo { width: 160px; filter: contrast(1.2) grayscale(1); }
 
-        /* Sekcja wyników - styl "tabeli z maszyny do pisania" */
-        .results-grid {
+        /* Styl wyników - jak wycinki */
+        .grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 60px;
+            gap: 50px;
         }
 
-        .zine-box {
-            border: 2px solid #000;
-            padding: 20px;
-            position: relative;
+        .column h2 {
+            background: var(--ink);
+            color: var(--paper);
+            display: inline-block;
+            padding: 5px 15px;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            transform: skew(-5deg);
         }
 
-        .zine-box h2 {
-            position: absolute;
-            top: -20px;
-            left: 10px;
-            background: #000;
-            color: #fff;
-            padding: 2px 10px;
-            font-size: 1.2rem;
+        .match-card {
             font-family: 'Courier Prime', monospace;
+            border-left: 4px solid var(--ink);
+            margin-bottom: 20px;
+            padding-left: 15px;
+            transition: all 0.2s;
         }
 
-        .match-entry {
-            font-family: 'Courier Prime', monospace;
-            border-bottom: 1px dashed #000;
-            padding: 10px 0;
-            display: flex;
-            justify-content: space-between;
+        .match-card:hover {
+            background: var(--ink);
+            color: var(--paper);
         }
 
-        .score-tag {
-            font-weight: bold;
-            border: 1px solid #000;
-            padding: 0 5px;
-            background: #eee;
-        }
+        .date { font-size: 0.8rem; text-decoration: underline; display: block; margin-bottom: 5px; }
+        .teams { font-weight: bold; font-size: 1.1rem; }
+        .score { float: right; font-weight: 900; font-size: 1.3rem; }
 
-        /* Śpiewnik jako "Wlepka" */
-        .songbook-promo {
-            background: #000;
-            color: #fff;
-            padding: 40px;
+        /* Sekcja Śpiewnik - "Manifest" */
+        .manifesto {
+            margin-top: 60px;
+            border: 4px dashed var(--ink);
+            padding: 30px;
             text-align: center;
-            transform: rotate(1deg);
         }
 
-        .songbook-promo h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-
-        .download-link {
+        .manifesto h3 { font-size: 2.5rem; margin-bottom: 10px; }
+        
+        .btn-download {
+            background: var(--ink);
+            color: var(--paper);
+            padding: 20px 40px;
+            text-decoration: none;
+            font-weight: 900;
             display: inline-block;
             margin-top: 20px;
-            padding: 15px 30px;
-            background: #fff;
-            color: #000;
-            text-decoration: none;
-            font-weight: bold;
-            text-transform: uppercase;
-            border: 3px solid #000;
+            font-size: 1.5rem;
+            border: none;
+            cursor: pointer;
             transition: 0.2s;
         }
 
-        .download-link:hover {
+        .btn-download:hover {
             transform: translate(-5px, -5px);
-            box-shadow: 5px 5px 0px #fff;
-            background: #f0f0f0;
+            box-shadow: 5px 5px 0px #555;
         }
 
-        footer {
-            margin-top: 50px;
-            text-align: center;
+        .footer-note {
+            margin-top: 40px;
             font-family: 'Courier Prime', monospace;
-            font-size: 0.8rem;
-            border-top: 1px solid #000;
-            padding-top: 20px;
+            font-style: italic;
+            font-size: 0.9rem;
+            text-align: center;
         }
 
-        /* Responsywność */
-        @media (max-width: 768px) {
-            .results-grid { grid-template-columns: 1fr; }
-            .header-text h1 { font-size: 2.5rem; }
-            .zine-container { padding: 20px; }
+        /* Markerowe dopiski */
+        .handwritten {
+            font-family: 'Courier Prime', monospace;
+            color: #d10000; /* Czerwony marker */
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: absolute;
+        }
+
+        @media (max-width: 800px) {
+            .grid { grid-template-columns: 1fr; }
+            .header-main h1 { font-size: 3rem; }
+            .zine-sheet { padding: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="zine-container">
+    <div class="zine-sheet">
+        <div class="tape-effect"></div>
+        <span class="handwritten" style="top: 150px; left: 20px; transform: rotate(-10deg);">KOCHAJ AKS!</span>
+        
         <header>
-            <div class="header-text">
-                <h1>AKS ZŁY</h1>
-                <p style="font-family: 'Courier Prime';">PRAGA PÓŁNOC // RAPORT MECZOWY</p>
+            <div class="header-main">
+                <h1>ZŁY<br>ZIN</h1>
+                <p>BIULETYN INFORMACYJNY NR 2026 // W-WA</p>
             </div>
-            <div class="logo-wrap">
-                <img src="Logo/AKS_ZŁY.jpg" alt="Logo" class="logo" onerror="this.src='https://via.placeholder.com/140?text=LOGO+ZLY'">
+            <div class="logo-box">
+                <img src="Logo/AKS_ZŁY.jpg" alt="AKS ZŁY" class="logo" onerror="this.src='https://via.placeholder.com/160/000?text=LOGO+ZLY'">
             </div>
         </header>
 
-        <div class="results-grid">
-            <div class="zine-box">
-                <h2>CHŁOPAKI_LOG</h2>
-                <div class="match-entry">
-                    <span>ZŁY vs START OTWOCK</span>
-                    <span class="score-tag">0:1</span>
+        <div class="grid">
+            <div class="column">
+                <h2>CHŁOPAKI / KLASA A</h2>
+                
+                <div class="match-card">
+                    <span class="date">11.04.2026</span>
+                    <span class="score">0:1</span>
+                    <span class="teams">ZŁY vs START OTWOCK</span>
                 </div>
-                <div class="match-entry">
-                    <span>BŁYSKAWICA vs ZŁY</span>
-                    <span class="score-tag">2:2</span>
+
+                <div class="match-card">
+                    <span class="date">04.04.2026</span>
+                    <span class="score">2:2</span>
+                    <span class="teams">BŁYSKAWICA vs ZŁY</span>
                 </div>
-                <div class="match-entry">
-                    <span>ZŁY vs FC PRAGA</span>
-                    <span class="score-tag">4:0</span>
+
+                <div class="match-card">
+                    <span class="date">28.03.2026</span>
+                    <span class="score">4:0</span>
+                    <span class="teams">ZŁY vs FC PRAGA</span>
                 </div>
+
+                <div class="match-card">
+                    <span class="date">21.03.2026</span>
+                    <span class="score">1:2</span>
+                    <span class="teams">AMUR WILGA vs ZŁY</span>
+                </div>
+                <span class="handwritten" style="position:relative; left: 50px;">Walczyć do końca!</span>
             </div>
 
-            <div class="zine-box" style="transform: translateY(15px);">
-                <h2>DZIEWCZYNY_LOG</h2>
-                <div class="match-entry">
-                    <span>ZŁY vs LECH II POZNAŃ</span>
-                    <span class="score-tag">0:0</span>
+            <div class="column">
+                <h2>DZIEWCZYNY / III LIGA</h2>
+                
+                <div class="match-card">
+                    <span class="date">11.04.2026</span>
+                    <span class="score">0:0</span>
+                    <span class="teams">ZŁY vs LECH II POZNAŃ</span>
                 </div>
-                <div class="match-entry">
-                    <span>ZAMŁYNIE vs ZŁY</span>
-                    <span class="score-tag">1:3</span>
+
+                <div class="match-card">
+                    <span class="date">04.04.2026</span>
+                    <span class="score">3:1</span>
+                    <span class="teams">ZAMŁYNIE vs ZŁY</span>
                 </div>
-                <div class="match-entry">
-                    <span>ZŁY vs POLONIA W-WA</span>
-                    <span class="score-tag">2:1</span>
+
+                <div class="match-card">
+                    <span class="date">29.03.2026</span>
+                    <span class="score">2:1</span>
+                    <span class="teams">ZŁY vs POLONIA W-WA</span>
+                </div>
+
+                <div class="match-card">
+                    <span class="date">22.03.2026</span>
+                    <span class="score">1:0</span>
+                    <span class="teams">DIAMENTY vs ZŁY</span>
                 </div>
             </div>
         </div>
 
-        <div class="songbook-promo">
-            <h2>GŁOŚNIEJ!</h2>
-            <p>Nie marnuj tchu na trybunach. Śpiewaj z nami to, co wypracowaliśmy na podwórkach i w sercach. Śpiewnik w PDF gotowy do druku.</p>
-            <a href="spiewnik/spiewnik.pdf" target="_blank" class="download-link">Pobierz śpiewnik.pdf</a>
+        <div class="manifesto">
+            <h3>ŚPIEWAJ Z NAMI</h3>
+            <p>To nie jest zwykły klub. To jest ZŁY. Pobierz tekstówki, naucz się rytmu. <br> Widzimy się na Don Pedro (Kawęczyńska 44).</p>
+            <a href="spiewnik/spiewnik.pdf" target="_blank" class="btn-download">POBIERZ ŚPIEWNIK (PDF)</a>
         </div>
 
-        <footer>
-            <p>KOD: 2026_ZŁY_SYSTEM // DEMOKRACJA SPORTOWA // BRAK REKLAM</p>
-        </footer>
+        <div class="footer-note">
+            <p>WYDANO NAKŁADEM WŁASNYM // PRAGA PÓŁNOC // 2026</p>
+        </div>
     </div>
 
 </body>
