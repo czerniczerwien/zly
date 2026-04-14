@@ -3,291 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strefa Kibica | AKS ZŁY - Alternatywny Klub Sportowy</title>
+    <title>ZŁY ZIN | Strefa Kibica</title>
     <style>
-        /* Import czcionki podobnej do tej z oficjalnej strony */
-        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
-
-        :root {
-            --black: #000000;
-            --white: #ffffff;
-            --grey-light: #f4f4f4;
-            --grey-dark: #333333;
-            --accent: #e60000; /* Czerwony akcent, można dopasować do logo */
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* Surowy, maszynowy font i mocny akcent */
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Space+Grotesk:wght@300;700&display=swap');
 
         body {
-            font-family: 'Open Sans', sans-serif;
-            background-color: var(--white);
-            color: var(--black);
-            line-height: 1.6;
+            background-color: #f0f0f0; /* Kolor starego papieru/betonu */
+            color: #1a1a1a;
+            font-family: 'Space Grotesk', sans-serif;
+            padding: 20px;
+            background-image: radial-gradient(#ccc 1px, transparent 1px);
+            background-size: 20px 20px; /* Delikatna kropka w tle jak w druku */
         }
 
-        h1, h2, h3, h4 {
-            font-family: 'Oswald', sans-serif;
+        .zine-container {
+            max-width: 900px;
+            margin: 0 auto;
+            border: 3px solid #000;
+            background: #fff;
+            padding: 40px;
+            box-shadow: 15px 15px 0px #000;
+        }
+
+        /* Nagłówek jako "wycinek z gazety" */
+        header {
+            border-bottom: 5px double #000;
+            padding-bottom: 30px;
+            margin-bottom: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .header-text h1 {
+            font-size: 4rem;
+            line-height: 0.8;
+            margin: 0;
             text-transform: uppercase;
             font-weight: 700;
+            letter-spacing: -2px;
         }
 
-        /* NAGŁÓWEK / HERO SECTION */
-        header {
-            background-color: var(--black);
-            color: var(--white);
-            padding: 60px 20px;
-            text-align: center;
-            border-bottom: 5px solid var(--black);
-        }
-
-        .logo-container {
-            margin-bottom: 30px;
+        .logo-wrap {
+            transform: rotate(-5deg); /* Asymetria */
+            border: 2px solid #000;
+            padding: 5px;
+            background: #fff;
         }
 
         .logo {
-            max-width: 180px;
-            height: auto;
-            border-radius: 50%;
-            /* Delikatna obwódka, by odciąć od tła w razie potrzeby */
-            border: 2px solid var(--white); 
+            width: 140px;
+            filter: grayscale(1); /* Styl czarno-białego zina */
+            display: block;
         }
 
-        header h1 {
-            font-size: 3.5rem;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
+        /* Sekcja wyników - styl "tabeli z maszyny do pisania" */
+        .results-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
         }
 
-        header p {
-            font-size: 1.2rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            color: #cccccc;
-        }
-
-        /* GŁÓWNY KONTENER */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.8rem;
-            margin-bottom: 50px;
+        .zine-box {
+            border: 2px solid #000;
+            padding: 20px;
             position: relative;
         }
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background-color: var(--black);
-            margin: 15px auto 0;
+        .zine-box h2 {
+            position: absolute;
+            top: -20px;
+            left: 10px;
+            background: #000;
+            color: #fff;
+            padding: 2px 10px;
+            font-size: 1.2rem;
+            font-family: 'Courier Prime', monospace;
         }
 
-        /* SEKCJA WYNIKÓW (BLOKI) */
-        .results-section {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            margin-bottom: 80px;
-        }
-
-        .team-block {
-            flex: 1;
-            min-width: 320px;
-            background-color: var(--grey-light);
-            padding: 40px 30px;
-            border: 2px solid var(--black);
-            box-shadow: 8px 8px 0px var(--black); /* Brutalistyczny cień nawiązujący do wlepek/street artu */
-        }
-
-        .team-block h3 {
-            font-size: 2rem;
-            text-align: center;
-            margin-bottom: 30px;
-            border-bottom: 2px solid #ccc;
-            padding-bottom: 15px;
-        }
-
-        .match-row {
+        .match-entry {
+            font-family: 'Courier Prime', monospace;
+            border-bottom: 1px dashed #000;
+            padding: 10px 0;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-            border-bottom: 1px solid #ddd;
-            font-size: 1.1rem;
         }
 
-        .match-row:last-child {
-            border-bottom: none;
+        .score-tag {
+            font-weight: bold;
+            border: 1px solid #000;
+            padding: 0 5px;
+            background: #eee;
         }
 
-        .team-name {
-            font-weight: 600;
-            width: 40%;
-            text-transform: uppercase;
-        }
-
-        .team-name.home {
-            text-align: right;
-        }
-
-        .team-name.away {
-            text-align: left;
-        }
-
-        .score {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: var(--black);
-            color: var(--white);
-            padding: 5px 15px;
-            border-radius: 3px;
+        /* Śpiewnik jako "Wlepka" */
+        .songbook-promo {
+            background: #000;
+            color: #fff;
+            padding: 40px;
             text-align: center;
-            min-width: 80px;
+            transform: rotate(1deg);
         }
 
-        /* SEKCJA ŚPIEWNIKA */
-        .songbook-wrapper {
-            background-color: var(--black);
-            color: var(--white);
-            padding: 60px 40px;
-            text-align: center;
-            border: 2px solid var(--black);
+        .songbook-promo h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
         }
 
-        .songbook-wrapper h2 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-        }
-
-        .songbook-wrapper p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            line-height: 1.8;
-        }
-
-        .btn {
+        .download-link {
             display: inline-block;
-            background-color: var(--white);
-            color: var(--black);
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
+            margin-top: 20px;
+            padding: 15px 30px;
+            background: #fff;
+            color: #000;
             text-decoration: none;
-            padding: 15px 40px;
+            font-weight: bold;
             text-transform: uppercase;
-            border: 2px solid var(--white);
-            transition: all 0.3s ease;
+            border: 3px solid #000;
+            transition: 0.2s;
         }
 
-        .btn:hover {
-            background-color: var(--black);
-            color: var(--white);
+        .download-link:hover {
+            transform: translate(-5px, -5px);
+            box-shadow: 5px 5px 0px #fff;
+            background: #f0f0f0;
         }
 
-        /* STOPKA */
         footer {
-            background-color: var(--grey-light);
-            border-top: 1px solid #ddd;
+            margin-top: 50px;
             text-align: center;
-            padding: 30px 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.8rem;
+            border-top: 1px solid #000;
+            padding-top: 20px;
         }
 
-        /* RESPONSYWNOŚĆ */
+        /* Responsywność */
         @media (max-width: 768px) {
-            header h1 { font-size: 2.5rem; }
-            .section-title { font-size: 2.2rem; }
-            .team-name { font-size: 0.9rem; }
-            .score { font-size: 1.5rem; padding: 5px 10px; min-width: 60px;}
-            .team-block { padding: 30px 15px; }
+            .results-grid { grid-template-columns: 1fr; }
+            .header-text h1 { font-size: 2.5rem; }
+            .zine-container { padding: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo-container">
-            <img src="Logo/AKS_ZŁY.jpg" alt="Logo AKS ZŁY" class="logo" onerror="this.src='https://via.placeholder.com/180/ffffff/000000?text=LOGO+AKS+Z%C5%81Y'">
-        </div>
-        <h1>STREFA KIBICA AKS ZŁY</h1>
-        <p>ALTERNATYWNY KLUB SPORTOWY WARSZAWA</p>
-    </header>
+    <div class="zine-container">
+        <header>
+            <div class="header-text">
+                <h1>AKS ZŁY</h1>
+                <p style="font-family: 'Courier Prime';">PRAGA PÓŁNOC // RAPORT MECZOWY</p>
+            </div>
+            <div class="logo-wrap">
+                <img src="Logo/AKS_ZŁY.jpg" alt="Logo" class="logo" onerror="this.src='https://via.placeholder.com/140?text=LOGO+ZLY'">
+            </div>
+        </header>
 
-    <div class="container">
-        
-        <h2 class="section-title">WYNIKI OSTATNICH MECZÓW</h2>
-
-        <div class="results-section">
-            <div class="team-block">
-                <h3>ZŁE DZIEWCZYNY</h3>
-                
-                <div class="match-row">
-                    <div class="team-name home">AKS ZŁY</div>
-                    <div class="score">0:0</div>
-                    <div class="team-name away">Lech II Poznań UAM</div>
+        <div class="results-grid">
+            <div class="zine-box">
+                <h2>CHŁOPAKI_LOG</h2>
+                <div class="match-entry">
+                    <span>ZŁY vs START OTWOCK</span>
+                    <span class="score-tag">0:1</span>
                 </div>
-                
-                <div class="match-row">
-                    <div class="team-name home">Zamłynie Radom</div>
-                    <div class="score">1:3</div>
-                    <div class="team-name away">AKS ZŁY</div>
+                <div class="match-entry">
+                    <span>BŁYSKAWICA vs ZŁY</span>
+                    <span class="score-tag">2:2</span>
                 </div>
-
-                <div class="match-row">
-                    <div class="team-name home">AKS ZŁY</div>
-                    <div class="score">2:1</div>
-                    <div class="team-name away">Polonia Warszawa</div>
+                <div class="match-entry">
+                    <span>ZŁY vs FC PRAGA</span>
+                    <span class="score-tag">4:0</span>
                 </div>
             </div>
 
-            <div class="team-block">
-                <h3>ZŁE CHŁOPAKI</h3>
-                
-                <div class="match-row">
-                    <div class="team-name home">AKS ZŁY</div>
-                    <div class="score">0:1</div>
-                    <div class="team-name away">OKS Start Otwock</div>
+            <div class="zine-box" style="transform: translateY(15px);">
+                <h2>DZIEWCZYNY_LOG</h2>
+                <div class="match-entry">
+                    <span>ZŁY vs LECH II POZNAŃ</span>
+                    <span class="score-tag">0:0</span>
                 </div>
-                
-                <div class="match-row">
-                    <div class="team-name home">Błyskawica W-wa</div>
-                    <div class="score">2:2</div>
-                    <div class="team-name away">AKS ZŁY</div>
+                <div class="match-entry">
+                    <span>ZAMŁYNIE vs ZŁY</span>
+                    <span class="score-tag">1:3</span>
                 </div>
-
-                <div class="match-row">
-                    <div class="team-name home">AKS ZŁY</div>
-                    <div class="score">4:0</div>
-                    <div class="team-name away">FC Praga</div>
+                <div class="match-entry">
+                    <span>ZŁY vs POLONIA W-WA</span>
+                    <span class="score-tag">2:1</span>
                 </div>
             </div>
         </div>
 
-        <div class="songbook-wrapper">
-            <h2>ŹLE KIBICUJEMY I ŚPIEWAMY ŹLE!</h2>
-            <p>Zależy nam, by na stadionie dobrze i bezpiecznie czuł się każdy. Tworzymy stadion bez przemocy i wulgarności, ale z ogromną dawką głośnego, pozytywnego dopingu! Nie znasz słów? Pobierz nasz śpiewnik, ucz się tekstów i wspieraj Złe Dziewczyny i Złe Chłopaki z trybun.</p>
-            <a href="spiewnik/spiewnik.pdf" target="_blank" class="btn">POBIERZ ŚPIEWNIK (PDF)</a>
+        <div class="songbook-promo">
+            <h2>GŁOŚNIEJ!</h2>
+            <p>Nie marnuj tchu na trybunach. Śpiewaj z nami to, co wypracowaliśmy na podwórkach i w sercach. Śpiewnik w PDF gotowy do druku.</p>
+            <a href="spiewnik/spiewnik.pdf" target="_blank" class="download-link">Pobierz śpiewnik.pdf</a>
         </div>
 
+        <footer>
+            <p>KOD: 2026_ZŁY_SYSTEM // DEMOKRACJA SPORTOWA // BRAK REKLAM</p>
+        </footer>
     </div>
-
-    <footer>
-        <p>&copy; 2026 ALTERNATYWNY KLUB SPORTOWY ZŁY | PIERWSZY DEMOKRATYCZNY KLUB W WARSZAWIE</p>
-    </footer>
 
 </body>
 </html>
